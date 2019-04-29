@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.plasticlove.order.dao.OrderDetailDao">
+
+
+	<insert id="saveOrderDetail" parameterType="cn.plasticlove.order.entity.OrderDetail" >
+		insert into order_detail
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="detailId != null" >
+				detail_id,
+			</if>
+			<if test="orderId != null" >
+				order_id,
+			</if>
+			<if test="productId != null" >
+				product_id,
+			</if>
+			<if test="productName != null" >
+				product_name,
+			</if>
+			<if test="productPrice != null" >
+				product_price,
+			</if>
+			<if test="productQuantity != null" >
+				product_quantity,
+			</if>
+			<if test="productIcon != null" >
+				product_icon,
+			</if>
+
+				create_time,
+
+
+				update_time,
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="detailId != null" >
+				#{detailId},
+			</if>
+			<if test="orderId != null" >
+				#{orderId},
+			</if>
+			<if test="productId != null" >
+				#{productId},
+			</if>
+			<if test="productName != null" >
+				#{productName},
+			</if>
+			<if test="productPrice != null" >
+				#{productPrice},
+			</if>
+			<if test="productQuantity != null" >
+				#{productQuantity},
+			</if>
+			<if test="productIcon != null" >
+				#{productIcon},
+			</if>
+				NOW(),
+				NOW(),
+		</trim>
+	</insert>
+</mapper>
+ 
+
