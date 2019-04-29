@@ -16,8 +16,8 @@ import java.util.List;
  */
 @RestController
 public class ConsumerController {
-    private static final String REST_URL_PREFIX = "http://localhost:8081";
-
+    // private static final String REST_URL_PREFIX = "http://localhost:8081";
+    private static final String REST_URL_PREFIX = "http://CLOUD-DEPT";
     @Autowired
     private RestTemplate restTemplate;
 
