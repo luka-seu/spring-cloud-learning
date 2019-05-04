@@ -14,4 +14,10 @@ public interface ProductInfoDao {
     List<ProductInfo> findByProductStatus(@Param("productStatus") Integer productStatus);
 
     List<ProductInfo> findByProductIdIn(@Param("productIdList") List<String> productIdList);
+
+    ProductInfo findProductInfoById(@Param("productId")String productId);
+
+    void saveProductInfo(ProductInfo productInfo);
+    void updateStock(ProductInfo productInfo);
+
 }

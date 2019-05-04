@@ -1,9 +1,8 @@
 package cn.plasticlove.product.controller;
-
-
 import cn.plasticlove.product.VO.ProductInfoVO;
 import cn.plasticlove.product.VO.ProductVO;
 import cn.plasticlove.product.VO.ResultVO;
+import cn.plasticlove.product.dto.CartDTO;
 import cn.plasticlove.product.entity.ProductCategory;
 import cn.plasticlove.product.entity.ProductInfo;
 import cn.plasticlove.product.service.CategoryService;
@@ -17,11 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * 商品
- * Created by 廖师兄
- * 2017-12-09 21:13
- */
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -73,18 +68,18 @@ public class ProductController {
         return ResultVOUtil.success(productVOList);
     }
 
-    // /**
-    //  * 获取商品列表(给订单服务用的)
-    //  * @param productIdList
-    //  * @return
-    //  */
-    // @PostMapping("/listForOrder")
-    // public List<ProductInfoOutput> listForOrder(@RequestBody List<String> productIdList) {
-    //     return productService.findList(productIdList);
-    // }
-    //
-    // @PostMapping("/decreaseStock")
-    // public void decreaseStock(@RequestBody List<DecreaseStockInput> decreaseStockInputList) {
-    //     productService.decreaseStock(decreaseStockInputList);
-    // }
+     /**
+      * 获取商品列表(给订单服务用的)
+      * @param productIdList
+      * @return
+      */
+     @PostMapping("/listForOrder")
+     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
+         return productService.findList(productIdList);
+     }
+
+     @PostMapping("/decreaseStock")
+     public void decreaseStock(@RequestBody List<CartDTO> cartDTOList) {
+         productService.decreaseStock(cartDTOList);
+     }
 }

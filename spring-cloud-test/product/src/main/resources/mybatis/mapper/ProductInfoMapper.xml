@@ -1,24 +1,95 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.plasticlove.product.dao.ProductInfoDao">
+    <insert id="saveProductInfo" parameterType="cn.plasticlove.product.entity.ProductInfo" >
+        insert into product_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="productId != null" >
+                product_id,
+            </if>
+            <if test="productName != null" >
+                product_name,
+            </if>
+            <if test="productPrice != null" >
+                product_price,
+            </if>
+            <if test="productStock != null" >
+                product_stock,
+            </if>
+            <if test="productDescription != null" >
+                product_description,
+            </if>
+            <if test="productIcon != null" >
+                product_icon,
+            </if>
+            <if test="productStatus != null" >
+                product_status,
+            </if>
+
+            <if test="categoryType != null" >
+                category_type,
+            </if>
 
 
-	<select id="findByProductStatus" resultType="cn.plasticlove.product.entity.ProductInfo">
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="productId != null" >
+                #{productId},
+            </if>
+            <if test="productName != null" >
+                #{productName},
+            </if>
+            <if test="productPrice != null" >
+                #{productPrice},
+            </if>
+            <if test="productStock != null" >
+                #{productStock},
+            </if>
+            <if test="productDescription != null" >
+                #{productDescription},
+            </if>
+            <if test="productIcon != null" >
+                #{productIcon},
+            </if>
+            <if test="productStatus != null" >
+                #{productStatus},
+            </if>
+            <if test="categoryType != null" >
+                #{categoryType},
+            </if>
+        </trim>
+    </insert>
+    <select id="findByProductStatus" resultType="cn.plasticlove.product.entity.ProductInfo">
 		select * from product_info
 		where product_status = #{productStatus}
 	</select>
-
-
-	<select id="findByProductIdIn" resultType="cn.plasticlove.product.entity.ProductInfo" parameterType="java.util.List">
+    <select id="findByProductIdIn" resultType="cn.plasticlove.product.entity.ProductInfo"
+            parameterType="java.util.List">
+        select * from product_info
+        where product_id in
+        /*传入参数为List的处理方法*/
+        <foreach collection="productIdList" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="findProductInfoById" resultType="cn.plasticlove.product.entity.ProductInfo">
 		select * from product_info
-		where product_id in
-		/*传入参数为List的处理方法*/
-		<foreach collection="productIdList" index="index" item="id" open="(" separator="," close=")">
-			#{id}
-		</foreach>
+		where product_id = #{productId}
+
 	</select>
+    
+    <update id="updateStock" parameterType="cn.plasticlove.product.entity.ProductInfo">
+         update
+	    product_info
+	    set
+	    product_stock=#{productStock}
+	    where product_id=#{productId}
+    </update>
+    
+
+
 </mapper>
  
 

@@ -25,3 +25,6 @@ mybatis:
   mapper-locations:
     - classpath:mybatis/mapper/*.xml
   type-aliases-package: cn.plasticlove.order.entity
+
+server:
+  port: 8081
