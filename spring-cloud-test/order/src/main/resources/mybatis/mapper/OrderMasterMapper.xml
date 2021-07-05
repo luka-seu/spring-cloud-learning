@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.plasticlove.order.dao.OrderMasterDao">
+
+
+	<insert id="saveOrderMaster">
+		insert into order_master
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="orderId != null" >
+				order_id,
+			</if>
+			<if test="buyerName != null" >
+				buyer_name,
+			</if>
+			<if test="buyerPhone != null" >
+				buyer_phone,
+			</if>
+			<if test="buyerAddress != null" >
+				buyer_address,
+			</if>
+			<if test="buyerOpenid != null" >
+				buyer_openid,
+			</if>
+			<if test="orderAmount != null" >
+				order_amount,
+			</if>
+			<if test="orderStatus != null" >
+				order_status,
+			</if>
+			<if test="payStatus != null" >
+				pay_status,
+			</if>
+			<if test="createTime != null" >
+				create_time,
+			</if>
+			<if test="updateTime != null" >
+				update_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="orderId != null" >
+				#{orderId},
+			</if>
+			<if test="buyerName != null" >
+				#{buyerName},
+			</if>
+			<if test="buyerPhone != null" >
+				#{buyerPhone},
+			</if>
+			<if test="buyerAddress != null" >
+				#{buyerAddress},
+			</if>
+			<if test="buyerOpenid != null" >
+				#{buyerOpenid},
+			</if>
+			<if test="orderAmount != null" >
+				#{orderAmount},
+			</if>
+			<if test="orderStatus != null" >
+				#{orderStatus},
+			</if>
+			<if test="payStatus != null" >
+				#{payStatus},
+			</if>
+			<if test="createTime != null" >
+				#{createTime},
+			</if>
+			<if test="updateTime != null" >
+				#{updateTime},
+			</if>
+		</trim>
+	</insert>
+</mapper>
+ 
+
